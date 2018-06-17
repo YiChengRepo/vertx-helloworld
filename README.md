@@ -12,5 +12,6 @@ gradle clean build
 This will deploy an verticle listening on port 8080
 
 ## IntelliJ IDE
+<img width="895" alt="intellij vertx config" src="https://user-images.githubusercontent.com/2281199/41507050-071ce05a-7222-11e8-83c1-e88b83eb4486.png">
 
 
