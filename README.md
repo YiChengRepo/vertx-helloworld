@@ -8,6 +8,7 @@ gradle clean build
 
 ## command line
 `java -jar ./build/libs/vertx-helloworld-1.0-SNAPSHOT.jar`
+
 This will deploy an verticle listening on port 8080
 
 ## IntelliJ IDE
