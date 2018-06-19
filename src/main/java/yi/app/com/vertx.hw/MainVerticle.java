@@ -16,7 +16,10 @@ public class MainVerticle extends AbstractVerticle {
         Future<String> routerNextFuture = Future.future();
         vertx.deployVerticle(RouterNextVertecle.class.getName(), routerNextFuture);
 
-        CompositeFuture.all(hwFuture, routerFuture, routerNextFuture).setHandler(r -> {
+        Future<String> routerGetParamFuture = Future.future();
+        vertx.deployVerticle(GetParamsVertecle.class.getName(), routerGetParamFuture);
+
+        CompositeFuture.all(hwFuture, routerFuture, routerNextFuture, routerGetParamFuture).setHandler(r -> {
             if(r.succeeded()) {
                 System.out.println("all verticles deployed successfully !");
             } else {
