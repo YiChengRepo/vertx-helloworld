@@ -7,6 +7,8 @@ import io.vertx.ext.web.Route;
 import io.vertx.ext.web.Router;
 
 public class RouterNextVertecle extends AbstractVerticle {
+    public static final String KEY = "MY_KEY";
+
     @Override
     public void start() throws Exception {
         HttpServer server = vertx.createHttpServer();
@@ -14,6 +16,7 @@ public class RouterNextVertecle extends AbstractVerticle {
 
         Route route1 = router.route("/test/path/").handler(routingContext -> {
             HttpServerResponse response = routingContext.response();
+            routingContext.put(KEY, "value 1 from route 1");
             response.setChunked(true);
             response.write("route1\n");
             System.out.println("routeNext -> route 1");
@@ -22,8 +25,9 @@ public class RouterNextVertecle extends AbstractVerticle {
 
         Route route2 = router.route("/test/path/").handler(routingContext -> {
             System.out.println("routeNext -> route 2");
+            String value = routingContext.get(KEY);
             HttpServerResponse response = routingContext.response();
-            response.write("route2\n");
+            response.write("value from previous route is: [ " + value + " ], route2\n");
             routingContext.next();
         });
 
@@ -42,7 +46,7 @@ public class RouterNextVertecle extends AbstractVerticle {
         });
 
         server.requestHandler(router::accept).listen(8082);
-        System.out.println("HTTP server started on port 8082");
+       System.out.println("HTTP server started on port 8082");
     }
 
 

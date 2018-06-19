@@ -1,6 +1,7 @@
 package yi.app.com.vertx.hw;
 
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.http.HttpMethod;
 import io.vertx.core.http.HttpServer;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
@@ -15,7 +16,9 @@ public class GetParamsVertecle extends AbstractVerticle {
         Router router = Router.router(vertx);
         router.route().handler(BodyHandler.create());
 
-        router.route("/testpath/:producttype/:productid/").handler(routingContext -> {
+        router.route(HttpMethod.GET, "/testpath/:producttype/:productid/")
+            .produces("text/html")
+            .handler(routingContext -> {
 
             System.out.println("route get params");
             HttpServerRequest httpServerRequest = routingContext.request();
