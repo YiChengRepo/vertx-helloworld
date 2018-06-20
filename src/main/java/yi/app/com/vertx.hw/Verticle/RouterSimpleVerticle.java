@@ -1,4 +1,4 @@
-package yi.app.com.vertx.hw;
+package yi.app.com.vertx.hw.Verticle;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServer;
@@ -6,7 +6,7 @@ import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
 
-public class RouterVerticleSimple extends AbstractVerticle {
+public class RouterSimpleVerticle extends AbstractVerticle {
     @Override
     public void start() throws Exception {
         HttpServer server = vertx.createHttpServer();

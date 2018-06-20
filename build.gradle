@@ -19,7 +19,7 @@ dependencies {
 jar {
     manifest {
         attributes "Main-Class": "io.vertx.core.Launcher",
-            "Main-Verticle": "yi.app.com.vertx.hw.MainVerticle"
+            "Main-Verticle": "yi.app.com.vertx.hw.verticle.MainVerticle"
     }
 
     from {

@@ -1,4 +1,4 @@
-package yi.app.com.vertx.hw;
+package yi.app.com.vertx.hw.Verticle;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.CompositeFuture;
@@ -11,7 +11,7 @@ public class MainVerticle extends AbstractVerticle {
         vertx.deployVerticle(HelloWorldVerticle.class.getName(), hwFuture);
 
         Future<String> routerFuture = Future.future();
-        vertx.deployVerticle(RouterVerticleSimple.class.getName(), routerFuture);
+        vertx.deployVerticle(RouterSimpleVerticle.class.getName(), routerFuture);
 
         Future<String> routerNextFuture = Future.future();
         vertx.deployVerticle(RouterNextVertecle.class.getName(), routerNextFuture);
