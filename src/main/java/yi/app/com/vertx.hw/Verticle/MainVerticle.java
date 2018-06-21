@@ -23,13 +23,17 @@ public class MainVerticle extends AbstractVerticle {
         Future<String> orderClientSideVerticleFuture = Future.future();
         vertx.deployVerticle(OrderClientSideVerticle.class.getName(), orderClientSideVerticleFuture);
 
+        Future<String> httpClientSimpleVerticleFuture = Future.future();
+        vertx.deployVerticle(HttpClientSimpleVerticle.class.getName(), httpClientSimpleVerticleFuture);
+
         registerConsumerOrderItem();
 
         CompositeFuture.all(hwFuture,
             routerFuture,
             routerNextFuture,
             routerGetParamFuture,
-            orderClientSideVerticleFuture
+            orderClientSideVerticleFuture,
+            httpClientSimpleVerticleFuture
             ).setHandler(r -> {
             if(r.succeeded()) {
                 System.out.println("all verticles deployed successfully !");

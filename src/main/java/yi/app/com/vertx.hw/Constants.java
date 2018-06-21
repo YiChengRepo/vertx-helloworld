@@ -18,4 +18,11 @@ public final class Constants {
 
     public static final String TOPIC_ORDER_LAPTOP = "yi.app.com.topic.order.laptop";
 
+    public static final String MOCK_REAL_SERVER_HOST = "httpbin.org";
+    public static final String MOCK_REAL_SERVER_URL = "delay/0";
+
+    public static final String MOCK_JSON_SERVER_HOST = "localhost";
+    public static final int MOCK_JSON_SERVER_PORT = 3000;
+    public static final String MOCK_JSON_SERVER_URL = "/posts/1";
+
 }
