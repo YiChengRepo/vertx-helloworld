@@ -9,8 +9,6 @@ public class HttpClientSimpleVerticle extends AbstractVerticle {
     @Override
     public void start() throws Exception {
         vertx.createHttpServer().requestHandler(req -> {
-
-
             WebClient webClient = WebClient.create(vertx);
             webClient.get(Constants.MOCK_JSON_SERVER_PORT,
                 Constants.MOCK_JSON_SERVER_HOST,
