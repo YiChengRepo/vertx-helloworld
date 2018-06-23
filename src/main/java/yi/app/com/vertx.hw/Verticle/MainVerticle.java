@@ -1,8 +1,8 @@
 package yi.app.com.vertx.hw.Verticle;
 
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.CompositeFuture;
 import io.vertx.core.Future;
+import io.vertx.core.impl.CompositeFutureImpl;
 import yi.app.com.vertx.hw.Constants;
 
 public class MainVerticle extends AbstractVerticle {
@@ -31,13 +31,15 @@ public class MainVerticle extends AbstractVerticle {
 
         registerConsumerOrderItem();
 
-        CompositeFuture.all(
+       //compositeFuture can only support up to 6 future !,
+        //        CompositeFuture.all(
+         CompositeFutureImpl.all(
             hwFuture,
             routerFuture,
             routerNextFuture,
             routerGetParamFuture,
             orderClientSideVerticleFuture,
-//            httpClientSimpleVerticleFuture,
+            httpClientSimpleVerticleFuture,
             httpClientSimpleImprovedVerticleFuture
             ).setHandler(r -> {
             if(r.succeeded()) {

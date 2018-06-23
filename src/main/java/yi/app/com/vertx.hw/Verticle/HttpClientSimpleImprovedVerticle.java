@@ -8,6 +8,11 @@ import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.client.WebClient;
 import yi.app.com.vertx.hw.Constants;
 
+
+// @YiChengRepo
+//  This is a improved version of the previous example of HttpClientSimpleVerticle
+// where it looks like the so call call back hell
+//  in this example we use vertex future to avoid that
 public class HttpClientSimpleImprovedVerticle extends AbstractVerticle {
 
     @Override
