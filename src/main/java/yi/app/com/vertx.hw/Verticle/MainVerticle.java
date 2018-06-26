@@ -29,6 +29,10 @@ public class MainVerticle extends AbstractVerticle {
         Future<String> httpClientSimpleImprovedVerticleFuture = Future.future();
         vertx.deployVerticle(HttpClientSimpleImprovedVerticle.class.getName(), httpClientSimpleImprovedVerticleFuture);
 
+        Future<String> orderVerticleFuture = Future.future();
+        vertx.deployVerticle(OrderVerticle.class.getName(), orderVerticleFuture);
+
+
         registerConsumerOrderItem();
 
        //compositeFuture can only support up to 6 future !,
@@ -40,7 +44,8 @@ public class MainVerticle extends AbstractVerticle {
             routerGetParamFuture,
             orderClientSideVerticleFuture,
             httpClientSimpleVerticleFuture,
-            httpClientSimpleImprovedVerticleFuture
+            httpClientSimpleImprovedVerticleFuture,
+            orderVerticleFuture
             ).setHandler(r -> {
             if(r.succeeded()) {
                 System.out.println("all verticles deployed successfully !");
